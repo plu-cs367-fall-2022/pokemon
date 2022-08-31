@@ -1,0 +1,46 @@
+# Pokemon Database
+
+This is a postgres database supporting a Pokemon dataset from [The Complete Pokemon Dataset](https://www.kaggle.com/datasets/rounakbanik/pokemon) from Kaggle.
+
+It's intended to be run from Docker, and contains the postgres database as well as an instance of [pgAdmin](https://www.pgadmin.org/)
+
+## Prerequisites
+
+[Docker](https://www.docker.com/)
+
+## How to run
+
+from the root directory of this repository:
+
+```
+docker compose up
+```
+
+## How to use
+
+### Logging in
+
+Once Docker has finished loading, open a browser to [localhost:5050](localhost:5050)
+
+Sign in with the credentials found in the `docker-compose.yaml` file:
+email: admin@admin.com
+password: root
+
+### First-time setup
+
+Click the "Add New Server" button under Quick Links and enter the following fields:
+General -> Name: pg_container
+Connection -> Host name/address: pg_container
+Username: postgres
+Password: password
+Save Password?: true
+
+You should now see `pg_container` under the `Servers` section in the left menu. You can drill down into `pg_container -> Databases -> pokemon -> Schemas -> Tables` and find the `pokemon` table.
+
+### Making Queries
+
+Right click on the `Servers -> pg_container -> Databases -> pokemon` section from the explorer menu and select `Query Tool`. This will open a text editor where you can make queries.
+
+Try it out by typing `select count(*) from pokemon` and clicking the execute/refresh button (or hitting F5).
+
+Happy querying!
